@@ -1,0 +1,6 @@
+nltk~=3.8.1
+spacy~=3.7.5
+beautifulsoup4~=4.12.3
+Scrapy~=2.11.2
+w3lib~=2.2.1
+Flask~=2.2.5
