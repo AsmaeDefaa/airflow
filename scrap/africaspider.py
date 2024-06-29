@@ -84,7 +84,7 @@ class AfricaspiderSpider(scrapy.Spider):
 
     def parse(self, response):
         titles = response.xpath('//h3[@class="item-title"]/a')
-        
+        count = 0
         for title in titles:
             title_text = title.xpath('./text()').get().strip()
             article_link = title.xpath('./@href').get()
@@ -99,7 +99,7 @@ class AfricaspiderSpider(scrapy.Spider):
             yield SplashRequest(article_link, self.parse_article_content, meta={'title': title_text, 'date': article_date_text})
 
         total_pages = self.get_total_pages(response)
-        
+
         for page_number in range(2, total_pages + 1):
             pagination_url = f"https://northafricapost.com/category/headlines/morocco/page/{page_number}"
             yield SplashRequest(pagination_url, self.parse, args={'wait': 2})
@@ -119,7 +119,7 @@ class AfricaspiderSpider(scrapy.Spider):
         }
 
     def get_total_pages(self, response):
-        return 975  # Ajustez cette logique pour extraire le nombre total de pages de manière dynamique
+        return 3  # Ajustez cette logique pour extraire le nombre total de pages de manière dynamique
         
 
 
