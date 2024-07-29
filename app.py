@@ -30,7 +30,7 @@ def getAll():
 @app.route('/documents', methods=['GET'])
 def get_all_documents():
     collection = db['article']
-    documents = collection.find().limit(40)
+    documents = collection.find().limit(150)
     result = []
 
     for document in documents:
